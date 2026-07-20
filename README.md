@@ -10,7 +10,7 @@ HTML estático puro. Sem npm, sem framework, sem etapa de build. Deploy direto n
 - `assets/js/main.js` — motion, filtros, FAQ e integrações de WhatsApp
 - `assets/js/vendor/` — GSAP, ScrollTrigger e Lenis, servidos localmente
 - `assets/fonts/` — Archivo e Inter em woff2, `font-display: optional`
-- `assets/img/` — 71 referências de catálogo e 8 logos de marca
+- `assets/img/` — 71 referências de catálogo e 8 logos de marca; `assets/bg-arq-*.webp` — fundo fixo da seção de arquitetos
 - `COPY-FONTE-DA-VERDADE.md` — copy aprovada e pendências com a cliente
 
 O CSS está inline dentro do `index.html` de propósito: eliminou 540 ms de bloqueio

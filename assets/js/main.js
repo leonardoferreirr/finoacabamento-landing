@@ -250,6 +250,28 @@
     });
   }
 
+  /* ---------- FALLBACK iOS PARA O PARALLAX ---------- */
+  /* iOS Safari ignora background-attachment:fixed. Nele a foto vira um filho
+     position:fixed, ligado só enquanto a seção está no viewport. */
+  (function () {
+    var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    if (!isIOS) return;
+    document.documentElement.classList.add('is-ios');
+    var secs = Array.prototype.slice.call(document.querySelectorAll('.parallax-section'));
+    function tick() {
+      secs.forEach(function (s) {
+        var bg = s.querySelector('.parallax-bg');
+        if (!bg) return;
+        var r = s.getBoundingClientRect();
+        bg.classList.toggle('is-on', r.bottom > 0 && r.top < window.innerHeight);
+      });
+    }
+    window.addEventListener('scroll', tick, { passive: true });
+    window.addEventListener('resize', tick);
+    tick();
+  })();
+
   /* ---------- REFRESH ---------- */
   if (hasST) {
     window.addEventListener('load', function () { window.ScrollTrigger.refresh(); });

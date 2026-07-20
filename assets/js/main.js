@@ -250,6 +250,24 @@
     });
   }
 
+  /* ---------- FUNDOS PARALLAX SOB DEMANDA ---------- */
+  /* background-image de CSS não é lazy: as 3 fotos entrariam no caminho crítico
+     e derrubavam o LCP. A classe .bg-on só entra quando a seção se aproxima. */
+  (function () {
+    var secs = Array.prototype.slice.call(document.querySelectorAll('.parallax-section'));
+    if (!secs.length) return;
+    if (!('IntersectionObserver' in window)) {
+      secs.forEach(function (s) { s.classList.add('bg-on'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('bg-on'); obs.unobserve(en.target); }
+      });
+    }, { rootMargin: '600px 0px' });
+    secs.forEach(function (s) { io.observe(s); });
+  })();
+
   /* ---------- FALLBACK iOS PARA O PARALLAX ---------- */
   /* iOS Safari ignora background-attachment:fixed. Nele a foto vira um filho
      position:fixed, ligado só enquanto a seção está no viewport. */

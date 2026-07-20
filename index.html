@@ -89,7 +89,7 @@ a{color:inherit;text-decoration:none}
 ul{list-style:none}
 button,input,select,textarea{font:inherit;color:inherit}
 h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.03;letter-spacing:var(--tracking-display)}
-::selection{background:var(--accent);color:#fff}
+::selection{background:var(--accent-bright);color:#171310}
 :focus-visible{outline:2px solid var(--accent-bright);outline-offset:3px}
 
 .shell{width:100%;max-width:var(--shell);margin-inline:auto;padding-inline:var(--gutter)}
@@ -103,7 +103,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.03;let
 .lead{color:var(--muted);max-width:52ch;margin-top:1.1rem}
 .section--paper .lead{color:var(--ink-soft)}
 em.mark{font-style:normal;color:var(--accent-bright)}
-.section--paper em.mark{color:var(--accent)}
+.section--paper em.mark{color:#8A6230}
 
 /* ---------- REVEAL ---------- */
 .js [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease-out),transform .9s var(--ease-out)}
@@ -117,8 +117,8 @@ em.mark{font-style:normal;color:var(--accent-bright)}
 
 /* ---------- BOTÕES ---------- */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;height:56px;padding-inline:1.7rem;border-radius:var(--pill);font-weight:600;font-size:.98rem;border:1px solid transparent;cursor:pointer;transition:transform .3s var(--ease-out),background .3s var(--ease-out),box-shadow .3s var(--ease-out),border-color .3s var(--ease-out);text-align:center}
-.btn--solid{background:var(--accent);color:#fff;box-shadow:0 14px 34px -16px rgba(176,130,74,.8)}
-.btn--solid:hover{background:var(--accent-bright);transform:translateY(-2px);box-shadow:0 18px 44px -14px rgba(214,168,99,.7)}
+.btn--solid{background:var(--accent-bright);color:#171310;box-shadow:0 14px 34px -16px rgba(214,168,99,.8)}
+.btn--solid:hover{background:#E5C084;transform:translateY(-2px);box-shadow:0 18px 44px -14px rgba(229,192,132,.7)}
 .btn--ghost{border-color:var(--line);color:var(--fg);background:rgba(241,235,225,.05);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .btn--ghost:hover{border-color:var(--accent-bright);transform:translateY(-2px)}
 .section--paper .btn--ghost{border-color:var(--line-ink);color:var(--ink);background:rgba(28,24,21,.03)}
@@ -229,7 +229,7 @@ em.mark{font-style:normal;color:var(--accent-bright)}
 .gal__filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:clamp(1.8rem,3.4vw,2.6rem)}
 .chip{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:var(--pill);padding:.5rem 1rem;font-size:.83rem;font-weight:500;cursor:pointer;transition:.28s var(--ease-out)}
 .chip:hover{border-color:var(--accent-bright);color:var(--fg)}
-.chip.is-active{background:var(--accent);border-color:var(--accent);color:#fff}
+.chip.is-active{background:var(--accent-bright);border-color:var(--accent-bright);color:#171310;font-weight:600}
 .gal__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.8rem,1.5vw,1.3rem);margin-top:clamp(1.6rem,3vw,2.4rem)}
 .gcard{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--surface);border:1px solid var(--line);aspect-ratio:4/3;display:block}
 .gcard img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease-out)}
@@ -260,9 +260,11 @@ em.mark{font-style:normal;color:var(--accent-bright)}
 .arq__list li::before{content:"";flex:0 0 auto;width:18px;height:18px;margin-top:.28rem;border-radius:50%;background:var(--accent);-webkit-mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="black" d="M9.6 16.6 5 12l1.4-1.4 3.2 3.2 8-8L19 7.2l-9.4 9.4Z"/></svg>') center/contain no-repeat;mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="black" d="M9.6 16.6 5 12l1.4-1.4 3.2 3.2 8-8L19 7.2l-9.4 9.4Z"/></svg>') center/contain no-repeat}
 
 /* ---------- ARQUITETOS: parallax de foto fixa ---------- */
-.parallax-section{position:relative;width:100%;overflow:hidden;background:var(--deep);color:var(--fg);
-  background-image:url('assets/bg-arq-desktop.webp');background-repeat:no-repeat;background-size:cover;
-  background-position:center;background-attachment:fixed}
+.parallax-section{position:relative;width:100%;overflow:hidden;background-color:var(--deep);color:var(--fg);
+  background-repeat:no-repeat;background-size:cover;background-position:center;background-attachment:fixed}
+.parallax-section.bg-on[data-bg="arq"]{background-image:url('assets/bg-arq-desktop.webp')}
+.parallax-section.bg-on[data-bg="como"]{background-image:url('assets/bg-como-desktop.webp');background-position:center 30%}
+.parallax-section.bg-on[data-bg="cta"]{background-image:url('assets/bg-cta-desktop.webp')}
 .parallax-section::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(180deg,rgba(15,12,10,.7) 0%,rgba(15,12,10,.55) 45%,rgba(15,12,10,.74) 100%)}
 .parallax-bg{display:none}
@@ -273,16 +275,34 @@ em.mark{font-style:normal;color:var(--accent-bright)}
 .parallax-content .arq__list li{color:#EFE8DE;text-align:left;font-size:1.02rem;
   text-shadow:0 1px 16px rgba(0,0,0,.7)}
 @media (max-width:880px){
-  .parallax-section{background-image:url('assets/bg-arq-mobile.webp');background-position:center}
+  .parallax-section.bg-on[data-bg="arq"]{background-image:url('assets/bg-arq-mobile.webp')}
+  .parallax-section.bg-on[data-bg="como"]{background-image:url('assets/bg-como-mobile.webp')}
+  .parallax-section.bg-on[data-bg="cta"]{background-image:url('assets/bg-cta-mobile.webp')}
 }
 /* iOS Safari ignora background-attachment:fixed. Com .is-ios (setada por JS),
    a foto vira um filho position:fixed ligado só enquanto a seção está visível. */
 .is-ios .parallax-section{background-image:none!important;background-attachment:scroll!important;background-color:transparent}
 .is-ios .parallax-bg{display:none}
 .is-ios .parallax-bg.is-on{display:block;position:fixed;inset:0;width:100vw;height:100vh;z-index:-1;
-  background-image:url('assets/bg-arq-mobile.webp');background-size:cover;background-position:center;
-  background-repeat:no-repeat;pointer-events:none}
+  background-size:cover;background-position:center;background-repeat:no-repeat;pointer-events:none}
+.is-ios [data-bg="arq"] .parallax-bg{background-image:url('assets/bg-arq-mobile.webp')}
+.is-ios [data-bg="como"] .parallax-bg{background-image:url('assets/bg-como-mobile.webp')}
+.is-ios [data-bg="cta"] .parallax-bg{background-image:url('assets/bg-cta-mobile.webp')}
 .is-ios .parallax-section::before{position:absolute;height:100%}
+
+/* .parallax-inner: conteudo acima do overlay em secoes que ja tem padding proprio */
+.parallax-inner{position:relative;z-index:2}
+/* como funciona: cards mais opacos para nao competir com a foto */
+[data-bg="como"] .hcard{background:linear-gradient(155deg,rgba(37,32,25,.93),rgba(20,17,16,.95));
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+[data-bg="como"] .lead{color:#E2D9CC;text-shadow:0 1px 16px rgba(0,0,0,.75)}
+[data-bg="como"] .h-display{text-shadow:0 2px 24px rgba(0,0,0,.55)}
+/* cta: sem a nebula radial, a foto ja carrega o fundo */
+[data-bg="cta"]::after{display:none}
+[data-bg="cta"]{background-position:center 38%}
+[data-bg="cta"] .parallax-inner{padding-block:clamp(44px,7vh,96px)}
+[data-bg="cta"] .lead{color:#E6DDD1;text-shadow:0 1px 16px rgba(0,0,0,.6)}
+[data-bg="cta"] .h-display{color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.5)}
 
 /* ---------- FAQ ---------- */
 .faq__inner{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,5vw,5rem);align-items:start}
@@ -297,9 +317,7 @@ em.mark{font-style:normal;color:var(--accent-bright)}
 .faq__a p{padding:0 1.3rem 1.25rem;color:var(--ink-soft);font-size:.96rem;max-width:60ch}
 
 /* ---------- CTA FINAL ---------- */
-.cta{background:var(--deep);position:relative;overflow:hidden}
-.cta::before{content:"";position:absolute;width:52vw;height:52vw;border-radius:50%;background:radial-gradient(circle,rgba(176,130,74,.16),transparent 70%);top:-30%;right:-12%;filter:blur(60px);pointer-events:none}
-.cta__inner{position:relative;z-index:1;display:grid;justify-items:center;text-align:center;gap:1.3rem}
+.cta__inner{display:grid;justify-items:center;text-align:center;gap:1.3rem}
 .cta__inner .h-display{max-width:20ch}
 .cta__inner .lead{margin-top:0}
 .cta__actions{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;margin-top:.6rem}
@@ -527,8 +545,9 @@ em.mark{font-style:normal;color:var(--accent-bright)}
 </section>
 
 <!-- ============ COMO FUNCIONA ============ -->
-<section class="section section--deep" id="como">
-  <div class="shell">
+<section class="section parallax-section" data-bg="como" id="como">
+  <div class="parallax-bg" aria-hidden="true"></div>
+  <div class="shell parallax-inner">
     <h2 class="h-display" data-reveal>Do <em class="mark">tamanho do ambiente</em> ao material na obra</h2>
     <p class="lead" data-reveal data-d="1">Três passos, sem cadastro e sem espera de proposta.</p>
 
@@ -980,7 +999,7 @@ em.mark{font-style:normal;color:var(--accent-bright)}
 </section>
 
 <!-- ============ ARQUITETOS (parallax) ============ -->
-<section class="parallax-section" id="arquitetos">
+<section class="parallax-section" data-bg="arq" id="arquitetos">
   <div class="parallax-bg" aria-hidden="true"></div>
   <div class="shell parallax-content">
     <h2 class="h-display" data-reveal>Para quem <em class="mark">especifica</em></h2>
@@ -1031,8 +1050,9 @@ em.mark{font-style:normal;color:var(--accent-bright)}
 </section>
 
 <!-- ============ CTA ============ -->
-<section class="section cta" id="contato">
-  <div class="shell cta__inner">
+<section class="section parallax-section" data-bg="cta" id="contato">
+  <div class="parallax-bg" aria-hidden="true"></div>
+  <div class="shell cta__inner parallax-inner">
     <h2 class="h-display" data-reveal>Leve a sua metragem, saia com o <em class="mark">orçamento</em></h2>
     <p class="lead" data-reveal data-d="1">Mande a metragem do ambiente pelo WhatsApp. A gente confirma o que está em estoque, calcula a quantidade com a perda e fecha o orçamento no mesmo dia.</p>
     <div class="cta__actions" data-reveal data-d="2">

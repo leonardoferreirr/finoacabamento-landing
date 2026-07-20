@@ -1,0 +1,6 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "fino", "runtimeExecutable": "python3", "runtimeArgs": ["-m","http.server","4837"], "port": 4837 }
+  ]
+}

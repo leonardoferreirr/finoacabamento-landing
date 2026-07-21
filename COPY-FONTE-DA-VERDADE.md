@@ -1,172 +1,244 @@
-# Fino Acabamento — Copy fonte da verdade
+# Fino Acabamento — Copy fonte da verdade (v2, campanha de porcelanato)
 
-Base: Raio-X Estratégico (Teresa Maria de Matos e Cruz, TM Comercio e Serviços Ltda, 14/07/2026)
-+ conteúdo institucional do site atual (finoacabamento.netlify.app).
+Base: `[FISH] Briefing de Ajustes da Landing Page - Fino Acabamento.pdf` (15 páginas) + prints de
+direcionamento no WhatsApp + 84 fotos do showroom enviadas em 21/07/2026. O Raio-X Estratégico
+original (Teresa Maria de Matos e Cruz, 14/07/2026) segue valendo como contexto do negócio.
 
-## Decisões de posicionamento
+**Mudança em relação à v1:** a página deixou de ser institucional de revestimentos e virou landing
+de campanha exclusiva de porcelanato. Referência de layout: abcdaconstrucaoserra.com.br
+(fundo branco, blocos objetivos, marcas no início, vitrine de produto, CTA verde recorrente).
 
-**Big idea:** pronta-entrega. No mercado de revestimento de alto padrão a espera é a regra
-(pedido, fábrica, 30 a 60 dias). A Fino Acabamento tem estoque e showroom. O site inteiro
-gira em torno disso, porque é a vantagem real declarada no briefing e responde à objeção
-número 1 dos clientes.
+---
 
-**Produto prioritário:** porcelanato. Cubas e metais de cozinha em segundo plano.
-**Não destacar:** azulejo (pedido expresso da cliente).
+## Regras invioláveis desta página
 
-**Público principal:** consumidor final construindo ou reformando. Arquitetos como público
-secundário (hoje são a maior fonte de indicação, então precisam de motivo pra continuar
-indicando: estoque, showroom, marcas exclusivas).
+**Falar de:** porcelanato, obra, reforma, metragem, disponibilidade, estoque, prazo, Boa Viagem,
+Recife, atendimento especializado, curadoria, alto padrão.
 
-**Objeções a matar na página, na ordem em que aparecem no briefing:**
-1. Qual o preço
-2. Tem pronta-entrega
-3. Vocês entregam na minha cidade
+**Não falar de:** azulejo (como categoria), tinta, cuba, metal, vinílico, laminado, rodapé,
+"acabamentos em geral", "solução completa para obra", promoção agressiva, menor preço,
+liquidação, queima de estoque.
 
-**Praça:** Recife, Jaboatão dos Guararapes, Cabo de Santo Agostinho, Ipojuca,
-Vitória de Santo Antão, Caruaru. Atendimento em PE, PB e AL.
-Foco de crescimento nos próximos 90 dias: litoral sul (Ipojuca e Cabo de Santo Agostinho).
+**Sem preço fixo na página.** Orçamento é caso a caso.
 
-**Concorrentes:** Casa Revest, Refinare, Opera Revestimentos.
+**WhatsApp de campanha: (81) 98361-8877.** O outro número é institucional e não entra aqui.
 
-**Marca:** o logotipo já assina "Boutique de Revestimentos". A página segue esse registro,
-editorial e sóbrio, e evita completamente o vocabulário de loja de material de construção.
+---
 
-## Regras de escrita
+## Big idea
 
-- Sem travessão. Vírgula ou dois pontos.
-- Sem tag/eyebrow em caixa alta acima dos títulos.
-- Sem jargão técnico de web.
-- Números só quando vierem do briefing ou do site atual.
+Porcelanato escolhido com orientação, com prazo confirmado antes de fechar.
+
+O público chega decidido a comprar e com pressa. O que trava a compra não é preço, é insegurança:
+qual formato, qual tonalidade, quanto comprar e quando chega. A página vende a resposta a isso,
+não o produto. A pronta-entrega (big idea da v1) continua no ar, agora como prova dentro da
+seção de estoque e prazo, não como tese da página inteira.
 
 ---
 
 ## Hero
 
-**Título:** Revestimento de alto padrão, pronto para sair hoje
+**Headline:** Porcelanato para a sua obra, com curadoria e estoque em Recife
 
-**Apoio:** Porcelanatos das principais marcas do país em estoque no nosso showroom em
-Boa Viagem. Sua obra não para esperando fábrica.
+**Subheadline:** Escolha entre porcelanatos Elizabeth, Eliane e Decortiles com apoio de quem
+conhece formato, tonalidade e aplicação. Consulte disponibilidade e prazo pelo WhatsApp antes
+de fechar o pedido.
 
-**Botão principal:** Consultar disponibilidade
-**Botão secundário:** Ver ambientes
+**Botão principal:** Consultar porcelanatos disponíveis
+**Botão secundário:** Falar com especialista
 
-**Provas sob o hero:** 13 anos em Recife · Estoque próprio · Marcas exclusivas · Entrega em PE, PB e AL
+### Formulário
+**Título:** Receba opções de porcelanato para sua obra
+**Campos:** Nome, WhatsApp, Cidade da obra, Ambiente (opcional), Metragem aproximada (opcional)
+**Botão:** Receber opções no WhatsApp
 
----
-
-## Pronta-entrega (a seção que carrega a big idea)
-
-**Título:** A diferença entre escolher e receber
-
-**Texto:** Boa parte do revestimento de alto padrão em Recife é vendido sob encomenda. Você
-escolhe, paga e espera a fábrica produzir. Aqui o caminho é outro: o que está no showroom
-está no estoque, e o que está no estoque sai para a sua obra.
-
-**Três pilares:**
-
-1. **Estoque próprio**
-   Linhas completas em quantidade de obra, não amostra de mostruário.
-
-2. **Showroom em Boa Viagem**
-   Você vê a peça no tamanho real, com a luz certa, antes de decidir.
-
-3. **Entrega na sua cidade**
-   Recife, Jaboatão, Cabo de Santo Agostinho, Ipojuca, Vitória de Santo Antão e Caruaru.
+O formulário não envia e-mail: ele monta a mensagem e abre o WhatsApp já preenchido. Zero
+dependência de servidor e o lead chega qualificado.
 
 ---
 
-## Ambientes (catálogo visual)
+## Barra de marcas
 
-**Título:** Ambientes que saíram daqui
+**Texto:** Marcas selecionadas para obras que pedem acabamento de alto padrão
 
-**Apoio:** Porcelanatos, vinílicos, cubas, metais e complementos das marcas que trabalhamos.
-Filtre por marca ou fale com a gente para consultar uma peça específica.
+Elizabeth · Eliane · Decortiles
 
-**Botão do card:** Consultar disponibilidade
-**Botão da seção:** Ver catálogo completo no WhatsApp
+Fora desta página: Gart, Gauss, Vexa, Arquitech, De Bacco, Obi, E-home, Épiso. Dispersam o foco.
 
 ---
 
-## Marcas
+## Diferenciais — "Por que comprar porcelanato na Fino Acabamento"
 
-**Título:** As marcas que a sua obra pede pelo nome
-
-**Texto:** Somos loja exclusiva do Grupo Elizabeth há 13 anos. Com a integração ao Grupo
-Mohawk, ampliamos o portfólio e hoje trabalhamos Eliane, Elizabeth e Decortiles em
-porcelanato e cerâmica de alto padrão, além de vinílicos, texturas, metais, cubas de cozinha
-e complementos decorativos.
-
----
-
-## Para arquitetos
-
-**Título:** Para quem especifica
-
-**Texto:** A maior parte dos nossos clientes chega por indicação de arquiteto. Trabalhamos
-com quem especifica desde o começo: consulta de disponibilidade em tempo real, reserva de
-lote para a obra, amostras e apoio na compatibilização entre linhas.
-
-**Botão:** Falar com o showroom
+1. **Curadoria especializada** — Apoio para escolher o porcelanato certo para cada ambiente,
+   considerando estilo, uso, formato e aplicação.
+2. **Consulta de estoque e prazo** — A equipe verifica disponibilidade, tonalidade e prazo antes
+   de avançar com o orçamento.
+3. **Cálculo de metragem** — Envie planta, projeto ou medida aproximada e receba orientação de
+   quantidade.
+4. **Showroom em Boa Viagem** — Atendimento consultivo em Recife, perto do Shopping Recife, com
+   estacionamento próprio.
 
 ---
 
-## Perguntas frequentes
+## Vitrine
 
-**Vocês têm pronta-entrega?**
-Sim, e é o motivo de a maioria dos nossos clientes chegar até nós. O que está no showroom
-está em estoque. Para confirmar a quantidade da sua obra, chame no WhatsApp com a metragem.
+**Título:** Porcelanatos para diferentes estilos de projeto
+**Subtítulo:** Opções para salas, cozinhas, banheiros, varandas, áreas externas e ambientes
+integrados.
 
-**Qual o preço?**
-O valor depende da linha, do formato e da metragem. Mande a metragem do ambiente pelo
-WhatsApp que a gente monta o orçamento fechado, com o cálculo de perda já incluído.
+**Filtros:** Todos · Marmorizados · Cimentícios · Amadeirados · Grandes formatos · Tons neutros ·
+Áreas externas
 
-**Vocês entregam na minha cidade?**
-Entregamos em Recife, Jaboatão dos Guararapes, Cabo de Santo Agostinho, Ipojuca, Vitória de
-Santo Antão e Caruaru, e atendemos também Paraíba e Alagoas. Consulte o prazo da sua região.
+**Card:** foto do produto, nome do modelo, marca, formato, acabamento, CTA "Consultar
+disponibilidade".
 
-**Consigo ver a peça antes de comprar?**
-Sim. O showroom fica na Barão de Souza Leão, em Boa Viagem, e funciona de segunda a sexta,
-das 9h às 17h30.
-
-**Trabalham com arquitetos?**
-Sim. Atendemos escritórios e profissionais autônomos com consulta de disponibilidade,
-reserva de lote e amostras.
-
-**Além de porcelanato, o que mais vocês têm?**
-Pisos vinílicos, rodapés, painéis ripados, cubas e metais para cozinha, ralos lineares,
-argamassas, rejuntes e complementos decorativos.
+Formatos com alta procura, segundo o dossiê: 84x84, 90x90, 100x100. Boa saída em 70x70.
+120x120 procurado, porém com barreira de mão de obra em Recife — comunicar sem empurrar.
 
 ---
 
-## Fechamento
+## Estoque, prazo e disponibilidade
 
-**Título:** Leve a sua metragem, saia com o orçamento
+**Título:** Prazo definido antes de você fechar o pedido
+(o briefing sugeria "Precisa de porcelanato com prazo claro?"; troquei pergunta por afirmação,
+que é o tom consultivo pedido)
 
-**Texto:** Mande a metragem do ambiente pelo WhatsApp. A gente confirma o que está em estoque,
-calcula a quantidade com a perda e fecha o orçamento no mesmo dia.
+**Texto:** A Fino Acabamento consulta disponibilidade, tonalidade e prazo antes de fechar o
+pedido. Quando o produto está em estoque próprio, a retirada ou a entrega acontece com mais
+agilidade, conforme pagamento e logística.
 
-**Botão:** Chamar no WhatsApp
+**Cards:**
+- **Estoque próprio em Recife** — Opções selecionadas disponíveis para retirada ou entrega rápida.
+- **Prazo informado antes da compra** — Você sabe o que está disponível e qual o prazo antes de fechar.
+- **Acesso direto às fábricas** — Mais previsibilidade sobre chegada, reposição e disponibilidade.
 
 ---
 
-## Contato (dados confirmados no site atual)
+## Como funciona — "Como comprar seu porcelanato"
+
+1. **Envie sua metragem ou projeto** — Pode ser planta, medida aproximada, foto do ambiente ou
+   referência de produto.
+2. **Receba opções compatíveis com a sua obra** — A equipe verifica modelos, formatos, estoque,
+   prazo e possibilidades para o seu ambiente.
+3. **Feche com segurança** — Você recebe orientação, orçamento e disponibilidade antes de decidir.
+
+**CTA:** Enviar metragem no WhatsApp
+
+---
+
+## Para quem é
+
+**Título:** Para quem está escolhendo porcelanato agora
+
+**Texto:** Esta página é para quem está em fase de obra, reforma ou acabamento e precisa escolher
+porcelanato com segurança, sem perder tempo com opções fora do perfil do projeto.
+
+- Para quem está reformando casa ou apartamento
+- Para quem precisa definir porcelanato com prazo
+- Para quem quer comparar modelos com orientação
+- Para quem busca acabamento de médio e alto padrão
+- Para quem quer atendimento consultivo antes de comprar
+
+Fala com consumidor final. Não é página para especificador. A cliente quer reduzir dependência
+de arquitetos e crescer no consumidor final.
+
+---
+
+## Showroom
+
+**Título:** Showroom em Boa Viagem, Recife
+
+**Texto:** Visite a Fino Acabamento em Boa Viagem e veja opções de porcelanato com atendimento
+especializado. Estamos próximos ao Shopping Recife, em uma região de fácil acesso e com
+estacionamento.
+
+- Bairro: Boa Viagem, Recife/PE
+- Referência: próximo ao Shopping Recife
+- Estacionamento próprio
+- Segunda a sexta, das 9h às 17h30
+- Sábado: somente com agendamento
+
+**CTA:** Falar no WhatsApp antes de visitar
+
+---
+
+## FAQ — "Perguntas frequentes sobre porcelanato"
+
+**Vocês têm porcelanato pronta-entrega?** Temos opções em estoque próprio. A disponibilidade varia
+conforme modelo, formato e tonalidade. Consulte pelo WhatsApp.
+
+**Vocês entregam em Recife e região?** Sim. Atendemos Recife, Região Metropolitana, Litoral Sul e
+outras cidades de Pernambuco, conforme disponibilidade e logística.
+
+**Como sei a quantidade certa de porcelanato?** A equipe ajuda no cálculo a partir da metragem,
+planta ou projeto.
+
+**Vocês trabalham com grandes formatos?** Sim. Há procura por formatos como 84x84, 90x90, 100x100
+e 120x120, conforme disponibilidade.
+
+**Vocês passam preço pelo WhatsApp?** O orçamento depende do modelo, metragem, disponibilidade e
+prazo. A equipe consulta as opções e retorna com as condições.
+
+**Vocês vendem outros produtos além de porcelanato?** Sim, a loja tem outras linhas, mas esta
+página é exclusiva para consulta de porcelanatos.
+
+---
+
+## CTA final
+
+**Título:** Escolha seu porcelanato com orientação antes de fechar a compra
+
+**Texto:** Envie sua metragem, a cidade da obra e o estilo desejado. A equipe da Fino Acabamento
+consulta as opções disponíveis e retorna pelo WhatsApp.
+
+**Botão:** Consultar porcelanatos no WhatsApp
+
+---
+
+## Contato
 
 - Endereço: R. Barão de Souza Leão, 1071, Boa Viagem, Recife, PE, 51030-300
-- WhatsApp e telefone: (81) 98361-8877
+- WhatsApp de campanha: (81) 98361-8877
 - E-mail: finoacabamento2013@gmail.com
-- Horário: segunda a sexta, das 9h às 17h30
+- Horário: segunda a sexta, 9h às 17h30. Sábado com agendamento.
 - Instagram: @finoacabamentoloja
-- Atendimento: Pernambuco, Paraíba e Alagoas
 
-## Pendências para o Leonardo confirmar com a cliente
+---
 
-1. **Dois WhatsApps diferentes.** O site atual publica (81) 98361-8877 e o briefing traz
-   81992998284. Usei o do site por ser o número público. Confirmar qual recebe os leads.
-2. **Caruaru** apareceu truncado no PDF do briefing ("Camara..."). Confirmar a lista final
-   de cidades.
-3. **Promoções.** O site atual anuncia 30%, 25% e 20% OFF em três linhas. Sem validade
-   declarada, não repliquei percentual fixo na página nova. Confirmar se a campanha está viva.
-4. **Catálogos em PDF.** Os arquivos originais somam 226 MB (um deles tem 65 MB). Troquei o
-   download direto por pedido via WhatsApp, que captura o lead e não trava no celular.
-5. **Sem fotos próprias.** Todas as imagens são de catálogo das marcas. Fotos reais do
-   showroom e de obras entregues elevariam bastante a página.
+## Decisões que tomei fora do briefing (e por quê)
+
+1. **Não citei "Grupo MonRock" na subheadline.** O briefing sugeria. Quem compra porcelanato não
+   sabe o que é MonRock; sabe o que é Elizabeth e Eliane. Troquei o nome do grupo pelo nome das
+   marcas, que é prova mais forte para o consumidor final.
+2. **Troquei "Precisa de porcelanato com prazo claro?" por "Prazo definido antes de você fechar o
+   pedido".** Pergunta genérica no título de seção enfraquece. Afirmação sustenta o tom consultivo.
+3. **Ambiente e metragem ficaram opcionais no formulário.** Cinco campos obrigatórios em tráfego
+   frio derrubam conversão. Nome, WhatsApp e cidade bastam para a equipe abrir a conversa.
+4. **Bloco "Destaques do mês" não foi publicado.** O briefing o deixa opcional e proíbe preço fixo
+   e tom de liquidação. O markup está pronto e comentado no HTML para ativar quando a cliente
+   definir a circular do mês.
+5. **Não repliquei os percentuais de desconto** (30%, 25%, 20% OFF) que existiam na v1.
+   Contradizem "sem promoção agressiva".
+6. **Não copiei a tipografia serifada da ABC.** A referência funciona pela estrutura, não pela
+   fonte. A serifa itálica é a marca da ABC. A Fino Acabamento tem logo em sans condensada, e a
+   página segue esse DNA.
+7. **Verde do WhatsApp em `#0B7A3B`, não no `#25D366` puro.** O verde puro com texto branco dá
+   2:1 de contraste e reprova em acessibilidade. O tom escolhido dá 5,4:1, continua lendo como
+   WhatsApp e mantém o botão "bem visível" que o briefing pede.
+
+---
+
+## Pendências com a cliente
+
+1. **Fotos de produto Decortiles.** A marca está na barra e é vendida na loja. A vitrine cobre o
+   que havia de imagem no acervo. Pedir 6 a 8 fotos de ambiente ou amostra, ou autorização formal
+   para usar o material do site da marca.
+2. **Cidades atendidas.** O briefing diz "Recife, Região Metropolitana, Litoral Sul e outras
+   cidades de Pernambuco". A v1 falava em PE, PB e AL. Confirmar o alcance real para não gerar
+   lead que não dá para atender.
+3. **Sábado com agendamento.** Confirmar se quer divulgar na página ou tratar caso a caso.
+4. **Estoque próprio.** A página afirma "estoque próprio em Recife" e "acesso direto às fábricas",
+   como está no briefing. Confirmar que a equipe sustenta a promessa no atendimento.
+5. **Formatos 70x70 e 84x84.** Citados como alta procura no dossiê. Confirmar se estão em linha,
+   porque a vitrine só mostra modelo com foto.
+6. **Endereço completo.** Está no rodapé como R. Barão de Souza Leão, 1071. Veio da v1, confirmar.

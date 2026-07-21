@@ -12,7 +12,7 @@ produto e CTA verde recorrente. Toda a copy e as decisões estão em `COPY-FONTE
 - `index.html` — página inteira, com o CSS inline no `<head>`
 - `assets/js/main.js` — motion, vitrine com filtros, formulário e integrações de WhatsApp
 - `assets/js/produtos.js` — **gerado**, não edite à mão
-- `assets/fonts/` — Archivo e Inter em woff2, `font-display: optional`
+- `assets/fonts/` — Archivo e Inter subsetadas, um woff2 por peso, `font-display: optional`
 - `porcelanatos.json` — catálogo da vitrine (fonte da verdade)
 - `scripts/build-vitrine.mjs` — valida o catálogo e gera `produtos.js`
 
@@ -74,6 +74,16 @@ Nunca meça com `simulate`: o Lantern infla o LCP e mente cerca de 9 pontos.
 Regras que sustentam o número, não quebre sem medir de novo:
 
 - `font-display: optional` em todos os `@font-face`, que é o que segura o CLS em 0
+- fontes **subsetadas**. Eram 10 arquivos (latin + latin-ext por peso) somando ~230 KB, todos
+  com prioridade `VeryHigh`, competindo com a foto do hero e segurando o LCP em 2,6 s. Agora
+  são 4 arquivos e 108 KB. Se a copy ganhar um caractere fora do conjunto, regere:
+
+  ```
+  SUB=' !"#$%&'"'"'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~ºª°ÀÁÂÃÇÉÊÍÓÔÕÚÜàáâãçéêíóôõúüÑñ—–…©·×²³€'
+  pyftsubset origem-latin.woff2 --text="$SUB" --layout-features='kern,liga,calt,tnum' \
+    --flavor=woff2 --output-file=assets/fonts/inter-400.woff2 --no-hinting --desubroutinize
+  ```
+- `fetchpriority="low"` nas imagens da vitrine, para não disputar banda com o hero
 - `width` e `height` explícitos em toda imagem, ou `aspect-ratio` no CSS
 - `loading="lazy"` em tudo abaixo da dobra, nunca no hero
 - preload da imagem do hero, com `media` separando mobile e desktop

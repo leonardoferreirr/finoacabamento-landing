@@ -87,7 +87,10 @@ ul{margin:0;padding:0;list-style:none}
 .sec-head{display:grid;gap:.85rem;margin-bottom:clamp(2rem,4vw,3.2rem)}
 .sec-head p{color:var(--muted);max-width:56ch}
 .sec-head--center{justify-items:center;text-align:center}
-.sec-head--center .h2{max-width:22ch}
+/* 30ch cabe o título em duas linhas; text-wrap:balance reparte os caracteres
+   entre elas. Abaixo de 640px volta a fluir livre, senão a quebra fica torta. */
+.sec-head--center .h2{max-width:30ch}
+@media (max-width:640px){.sec-head--center .h2{max-width:22ch}}
 
 /* ============ BOTÕES ============ */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
@@ -197,7 +200,8 @@ ul{margin:0;padding:0;list-style:none}
 @media (max-width:560px){.cards--4{grid-template-columns:1fr}}
 
 /* ============ VITRINE ============ */
-.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:clamp(1.6rem,2.6vw,2.2rem)}
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;
+  margin-bottom:clamp(1.6rem,2.6vw,2.2rem)}
 .chip{padding:.5rem 1rem;border-radius:var(--pill);border:1px solid var(--line);
   background:#fff;font-size:.86rem;font-weight:500;color:var(--ink-2);cursor:pointer;
   transition:background .2s var(--ease),color .2s var(--ease),border-color .2s var(--ease)}
@@ -257,6 +261,13 @@ ul{margin:0;padding:0;list-style:none}
 .is-ios [data-bg="cta"] .parallax-bg{background-image:url('assets/bg-cta-mobile.webp')}
 
 .band{display:grid;gap:1.1rem;max-width:640px}
+/* título e texto centrados; a lista fica centrada como bloco, mas cada item
+   segue alinhado à esquerda, senão o ícone de check desalinha linha a linha */
+.band--center{max-width:760px;margin-inline:auto;justify-items:center;text-align:center}
+.band--center .h2{max-width:30ch}
+.band--center .lead{max-width:62ch}
+.band--center .list-check{justify-items:start;text-align:left;margin-top:.6rem}
+@media (max-width:640px){.band--center .h2{max-width:22ch}}
 .list-check{display:grid;gap:.62rem;margin-top:.2rem}
 .list-check li{display:flex;gap:.65rem;align-items:flex-start;font-size:.95rem;color:rgba(255,255,255,.9)}
 .list-check svg{width:17px;height:17px;flex:none;margin-top:.22rem;stroke:var(--accent-soft);
@@ -431,7 +442,7 @@ html.no-motion .rv{opacity:1;transform:none;transition:none}
 <!-- ============ DIFERENCIAIS ============ -->
 <section class="section" id="diferenciais">
   <div class="shell">
-    <div class="sec-head rv">
+    <div class="sec-head sec-head--center rv">
       <h2 class="h2">Por que comprar porcelanato na Fino Acabamento</h2>
       <p>Loja especializada, com showroom em Recife e equipe que acompanha a escolha do começo ao fim.</p>
     </div>
@@ -463,7 +474,7 @@ html.no-motion .rv{opacity:1;transform:none;transition:none}
 <!-- ============ VITRINE ============ -->
 <section class="section section--paper" id="vitrine">
   <div class="shell">
-    <div class="sec-head rv">
+    <div class="sec-head sec-head--center rv">
       <h2 class="h2">Porcelanatos para diferentes estilos de projeto</h2>
       <p>Opções para salas, cozinhas, banheiros, varandas, áreas externas e ambientes integrados. Toda escolha passa por consulta de disponibilidade e prazo.</p>
     </div>
@@ -496,7 +507,7 @@ html.no-motion .rv{opacity:1;transform:none;transition:none}
 <!-- ============ ESTOQUE E PRAZO ============ -->
 <section class="section" id="estoque">
   <div class="shell">
-    <div class="sec-head rv">
+    <div class="sec-head sec-head--center rv">
       <h2 class="h2">Prazo definido antes de você fechar o pedido</h2>
       <p>A Fino Acabamento consulta disponibilidade, tonalidade e prazo antes de fechar o pedido. Quando o produto está em estoque próprio, a retirada ou a entrega acontece com mais agilidade, conforme pagamento e logística.</p>
     </div>
@@ -550,7 +561,7 @@ html.no-motion .rv{opacity:1;transform:none;transition:none}
 <section class="section parallax" id="para-quem" data-bg="quem">
   <div class="parallax-bg" aria-hidden="true"></div>
   <div class="shell parallax__in">
-    <div class="band rv">
+    <div class="band band--center rv">
         <h2 class="h2">Para quem está escolhendo porcelanato agora</h2>
         <p class="lead">Esta página é para quem está em fase de obra, reforma ou acabamento e precisa escolher porcelanato com segurança, sem perder tempo com opções fora do perfil do projeto.</p>
         <ul class="list-check">

@@ -218,6 +218,44 @@
   }
 
   /* ---------------------------------------------------------------
+     5b. Parallax de foto fixa
+     A background-image só entra quando a seção se aproxima. Se entrasse no CSS
+     puro, as duas fotos cairiam no caminho crítico e derrubariam o LCP.
+     --------------------------------------------------------------- */
+  var secs = Array.prototype.slice.call(document.querySelectorAll('.parallax'));
+  if (secs.length) {
+    if (!('IntersectionObserver' in window)) {
+      secs.forEach(function (s) { s.classList.add('bg-on'); });
+    } else {
+      var ioBg = new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { en.target.classList.add('bg-on'); obs.unobserve(en.target); }
+        });
+      }, { rootMargin: '600px 0px' });
+      secs.forEach(function (s) { ioBg.observe(s); });
+    }
+
+    /* iOS Safari ignora background-attachment:fixed. Nele a foto vira um filho
+       position:fixed, ligado só enquanto a seção está no viewport. */
+    var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    if (isIOS) {
+      document.documentElement.classList.add('is-ios');
+      var tick = function () {
+        secs.forEach(function (s) {
+          var bg = s.querySelector('.parallax-bg');
+          if (!bg) return;
+          var r = s.getBoundingClientRect();
+          bg.classList.toggle('is-on', r.bottom > 0 && r.top < window.innerHeight);
+        });
+      };
+      window.addEventListener('scroll', tick, { passive: true });
+      window.addEventListener('resize', tick);
+      tick();
+    }
+  }
+
+  /* ---------------------------------------------------------------
      6. Ano do rodapé
      --------------------------------------------------------------- */
   var ano = document.getElementById('ano');

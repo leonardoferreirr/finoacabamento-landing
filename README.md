@@ -16,6 +16,11 @@ produto e CTA verde recorrente. Toda a copy e as decisões estão em `COPY-FONTE
 - `porcelanatos.json` — catálogo da vitrine (fonte da verdade)
 - `scripts/build-vitrine.mjs` — valida o catálogo e gera `produtos.js`
 
+O hero, a seção "para quem está escolhendo" e o CTA final têm foto de fundo com véu escuro e
+texto branco. O véu do hero é 40% chapado **mais** um gradiente da esquerda: a foto é muito
+clara e só os 40% deixariam o subtítulo em 3,3:1, abaixo de AA. Medido por amostragem de
+pixel com o texto oculto: 5,6:1 no pior ponto.
+
 O CSS está inline dentro do `index.html` de propósito: eliminou 540 ms de bloqueio de
 renderização e levou o Lighthouse mobile de 87 para 100. Para editar estilo, mexa no bloco
 `<style>` do próprio `index.html`.
@@ -75,9 +80,15 @@ Regras que sustentam o número, não quebre sem medir de novo:
 - watchdog de 3 s no `main.js`: se o JS travar antes do IntersectionObserver, a classe
   `no-motion` entra e todo o conteúdo escondido por animação aparece
 
-A v2 removeu as três seções com `background-attachment: fixed` da versão anterior. Além de
-sair do escopo do briefing (que pediu menos fundo escuro), isso eliminou o risco de
-saturação de compositing no Safari.
+Duas seções usam `background-attachment: fixed` (para-quem e CTA final), a pedido do cliente.
+A `background-image` só entra com a classe `.bg-on`, ligada por IntersectionObserver: no CSS
+puro as duas fotos cairiam no caminho crítico e derrubariam o LCP. O iOS Safari ignora
+`background-attachment: fixed`, então nele a classe `.is-ios` troca por um filho
+`position: fixed` ligado só enquanto a seção está no viewport.
+
+**Testar no Safari antes de entregar.** Duas seções de foto travada é carga real de GPU, e
+saturação de compositing é efeito do conjunto. Se engasgar no iPhone, troque `fixed` por
+`position: sticky` numa das duas.
 
 ## Assets
 

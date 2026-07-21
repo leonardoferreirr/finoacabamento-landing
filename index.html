@@ -5,18 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Porcelanato em Recife | Fino Acabamento — Boa Viagem</title>
 <meta name="description" content="Porcelanato para obra e reforma em Recife, com curadoria, consulta de estoque e prazo antes de fechar. Showroom em Boa Viagem, perto do Shopping Recife. Elizabeth, Eliane e Decortiles.">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#100F0C">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://finoacabamento.vercel.app/">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Porcelanato em Recife | Fino Acabamento">
 <meta property="og:description" content="Curadoria, consulta de estoque e prazo antes de fechar o pedido. Showroom em Boa Viagem, Recife.">
-<meta property="og:image" content="https://finoacabamento.vercel.app/assets/hero-porc-1200.webp">
+<meta property="og:image" content="https://finoacabamento.vercel.app/assets/og.jpg">
 <meta property="og:locale" content="pt_BR">
 
-<link rel="preload" as="image" href="assets/hero-porc-mobile.webp" media="(max-width:980px)" fetchpriority="high">
-<link rel="preload" as="image" href="assets/hero-porc-900.webp" media="(min-width:981px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/hero-bg-mobile.webp" media="(max-width:980px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/hero-bg-1440.webp" media="(min-width:981px) and (max-width:1599px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/hero-bg-1920.webp" media="(min-width:1600px)" fetchpriority="high">
 
 <style>
 /* ============ FONTES (self-hosted, font-display:optional mata o CLS de swap) ============ */
@@ -42,6 +43,7 @@
   --line:#E4E1DB;
   --line-soft:#EEECE7;
   --accent:#9A7B4F;
+  --accent-soft:#C9A46A;
   --wa:#0B7A3B;
   --wa-hover:#096330;
 
@@ -103,44 +105,46 @@ ul{margin:0;padding:0;list-style:none}
 .btn svg{width:19px;height:19px;flex:none;fill:currentColor}
 
 /* ============ HEADER ============ */
-.header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.94);
+.header{position:sticky;top:0;z-index:60;background:rgba(17,16,12,.94);color:#fff;
   border-bottom:1px solid transparent;transition:border-color .25s var(--ease),box-shadow .25s var(--ease)}
 @supports (backdrop-filter:blur(8px)){.header{backdrop-filter:blur(8px)}}
-.header.is-stuck{border-bottom-color:var(--line);box-shadow:0 1px 18px rgba(21,20,15,.05)}
+.header.is-stuck{border-bottom-color:rgba(255,255,255,.14);box-shadow:0 1px 22px rgba(0,0,0,.28)}
 .header__in{display:flex;align-items:center;justify-content:space-between;gap:1.2rem;
   min-height:70px;width:min(var(--shell),100%);margin-inline:auto;padding-inline:var(--gutter)}
 .brand{display:flex;align-items:center;gap:.7rem;flex:none}
 .brand img{height:42px;width:auto}
 @media (max-width:520px){.brand img{height:36px}}
-.nav{display:flex;gap:1.7rem;font-size:.9rem;color:var(--ink-2);font-weight:500}
-.nav a{position:relative;padding-block:.3rem}
-.nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--accent);transition:width .25s var(--ease)}
+.nav{display:flex;gap:1.7rem;font-size:.9rem;color:rgba(255,255,255,.82);font-weight:500}
+.nav a{position:relative;padding-block:.3rem;transition:color .2s var(--ease)}
+.nav a:hover{color:#fff}
+.nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--accent-soft);transition:width .25s var(--ease)}
 .nav a:hover::after{width:100%}
 .header .btn{padding:.68rem 1.15rem;font-size:.88rem}
 @media (max-width:1040px){.nav{display:none}}
 @media (max-width:520px){.header .btn span{display:none}.header .btn{padding:.7rem .9rem}}
 
 /* ============ HERO ============ */
-.hero{border-bottom:1px solid var(--line-soft)}
-.hero__grid{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;
-  width:min(1440px,100%);margin-inline:auto}
-.hero__copy{display:flex;flex-direction:column;justify-content:center;gap:1.5rem;
-  padding:clamp(48px,6.6vw,92px) clamp(20px,4.4vw,72px)}
-.hero h1{font-size:var(--t-hero);max-width:15ch;text-wrap:balance}
-.hero__sub{color:var(--ink-2);max-width:46ch;font-size:clamp(1rem,1.08vw,1.1rem)}
-.hero__cta{display:flex;flex-wrap:wrap;gap:.75rem}
-.hero__trust{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;font-size:.83rem;color:var(--muted);
-  padding-top:.9rem;border-top:1px solid var(--line-soft)}
-.hero__trust li{display:flex;align-items:center;gap:.45rem}
-.hero__trust li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none}
+/* foto full-bleed + véu escuro. O véu é 40% chapado mais um gradiente da esquerda,
+   porque a foto é muito clara: só os 40% deixariam o subtítulo em 3,3:1, abaixo de AA. */
+.hero{position:relative;isolation:isolate;background:#100F0C}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;
+  background:url('assets/hero-bg-1440.webp') center/cover no-repeat}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(90deg,rgba(10,9,7,.72) 0%,rgba(10,9,7,.58) 46%,rgba(10,9,7,.4) 100%)}
+@media (min-width:1600px){.hero::before{background-image:url('assets/hero-bg-1920.webp')}}
 
-.hero__media{position:relative;min-height:clamp(430px,56vw,680px);background:var(--paper-2)}
-.hero__media picture{position:absolute;inset:0}
-.hero__media img{width:100%;height:100%;object-fit:cover}
-.hero__form{position:absolute;right:clamp(16px,2.4vw,34px);bottom:clamp(16px,2.4vw,34px);
-  left:clamp(16px,2.4vw,34px);max-width:396px;margin-left:auto;
-  background:#fff;border-radius:var(--r-lg);padding:clamp(1.15rem,1.8vw,1.6rem);
-  box-shadow:0 18px 48px rgba(21,20,15,.16)}
+.hero__grid{display:grid;grid-template-columns:1.06fr .94fr;align-items:center;
+  gap:clamp(2rem,4vw,4rem);width:min(var(--shell),100%);margin-inline:auto;
+  padding:clamp(64px,8vw,124px) var(--gutter)}
+.hero__copy{display:flex;flex-direction:column;justify-content:center;gap:1.5rem;color:#fff}
+.hero h1{font-size:var(--t-hero);max-width:15ch;text-wrap:balance;color:#fff}
+.hero__sub{color:rgba(255,255,255,.9);max-width:46ch;font-size:clamp(1rem,1.08vw,1.1rem)}
+.hero__cta{display:flex;flex-wrap:wrap;gap:.75rem}
+.hero .btn--ghost{color:#fff;border-color:rgba(255,255,255,.42)}
+.hero .btn--ghost:hover{background:#fff;color:var(--ink);border-color:#fff}
+
+.hero__form{background:#fff;border-radius:var(--r-lg);padding:clamp(1.25rem,1.9vw,1.7rem);
+  box-shadow:0 22px 60px rgba(0,0,0,.34);max-width:430px;margin-left:auto;width:100%}
 .hero__form h2{font-size:1.02rem;line-height:1.3;margin-bottom:.9rem;max-width:24ch}
 .field{margin-bottom:.6rem}
 .field label{display:block;font-size:.76rem;font-weight:600;color:var(--ink-2);margin-bottom:.28rem}
@@ -155,22 +159,17 @@ ul{margin:0;padding:0;list-style:none}
 .field.is-invalid .form__err{display:block}
 
 @media (max-width:980px){
-  .hero__grid{grid-template-columns:1fr}
-  /* display:contents dissolve o container para foto, texto e formulário
-     virarem itens do grid e poderem ser reordenados: foto → texto → form */
-  .hero__media{display:contents}
-  .hero__media picture{position:static;display:block;order:-2}
-  .hero__media img{aspect-ratio:16/10}
-  .hero__copy{order:-1;padding-inline:var(--gutter);padding-block:clamp(34px,7vw,52px)}
-  .hero__form{position:static;max-width:none;margin:0;border-radius:0;
-    box-shadow:none;border-top:1px solid var(--line);padding-inline:var(--gutter);
-    padding-block:clamp(1.4rem,5vw,2rem)}
+  .hero::before{background-image:url('assets/hero-bg-mobile.webp')}
+  .hero::after{background:linear-gradient(180deg,rgba(10,9,7,.66) 0%,rgba(10,9,7,.58) 55%,rgba(10,9,7,.72) 100%)}
+  .hero__grid{grid-template-columns:1fr;gap:2rem;padding-block:clamp(44px,9vw,72px)}
+  .hero__form{max-width:none;margin:0}
 }
 
 /* ============ MARCAS ============ */
 .brands{padding-block:clamp(34px,4.4vw,56px);border-bottom:1px solid var(--line-soft)}
-.brands__label{text-align:center;font-size:.86rem;color:var(--muted);max-width:46ch;
-  margin:0 auto 1.6rem;text-wrap:balance}
+.brands__label{text-align:center;font-size:.86rem;color:var(--muted);
+  margin:0 auto 1.6rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:620px){.brands__label{white-space:normal;font-size:.8rem}}
 .brands__row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
   gap:clamp(2rem,6vw,5rem)}
 /* caixa igual para todas: normaliza logos de proporção muito diferente */
@@ -227,16 +226,42 @@ ul{margin:0;padding:0;list-style:none}
 .vitrine__more{display:flex;justify-content:center;margin-top:clamp(1.6rem,2.6vw,2.4rem)}
 .vitrine__empty{color:var(--muted);font-size:.93rem;padding:2rem 0}
 
-/* ============ FAIXA EDITORIAL ============ */
-.band{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:clamp(2rem,4.5vw,4.5rem)}
-.band__media{border-radius:var(--r-lg);overflow:hidden;background:var(--paper-2);aspect-ratio:3/2}
-.band__media img{width:100%;height:100%;object-fit:cover}
-.band__body{display:grid;gap:1.1rem}
+/* ============ PARALLAX DE FOTO FIXA ============ */
+/* A foto trava e a seção desliza por cima. background-image só entra com .bg-on
+   (IntersectionObserver), senão as duas fotos caem no caminho crítico e derrubam o LCP. */
+.parallax{position:relative;overflow:hidden;background-color:#100F0C;color:#fff;
+  background-repeat:no-repeat;background-size:cover;background-position:center;
+  background-attachment:fixed}
+.parallax.bg-on[data-bg="quem"]{background-image:url('assets/bg-quem-desktop.webp')}
+.parallax.bg-on[data-bg="cta"]{background-image:url('assets/bg-cta-desktop.webp');background-position:center 38%}
+.parallax::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(9,8,6,.74) 0%,rgba(9,8,6,.62) 45%,rgba(9,8,6,.78) 100%)}
+/* seção parallax pede mais altura: com pouco curso de scroll o efeito de foto
+   travada quase não aparece */
+.parallax.section{padding-block:clamp(96px,15vh,190px)}
+.parallax__in{position:relative;z-index:2}
+.parallax .h2{color:#fff}
+.parallax .lead,.parallax p{color:rgba(255,255,255,.86)}
+.parallax .btn--ghost{color:#fff;border-color:rgba(255,255,255,.42)}
+.parallax .btn--ghost:hover{background:#fff;color:var(--ink);border-color:#fff}
+.parallax-bg{display:none}
+@media (max-width:880px){
+  .parallax.bg-on[data-bg="quem"]{background-image:url('assets/bg-quem-mobile.webp')}
+  .parallax.bg-on[data-bg="cta"]{background-image:url('assets/bg-cta-mobile.webp')}
+}
+/* iOS Safari ignora background-attachment:fixed. Com .is-ios (setada por JS),
+   a foto vira um filho position:fixed ligado só enquanto a seção está visível. */
+.is-ios .parallax{background-image:none!important;background-attachment:scroll!important;background-color:transparent}
+.is-ios .parallax-bg.is-on{display:block;position:fixed;inset:0;width:100vw;height:100vh;z-index:-1;
+  background-size:cover;background-position:center;background-repeat:no-repeat;pointer-events:none}
+.is-ios [data-bg="quem"] .parallax-bg{background-image:url('assets/bg-quem-mobile.webp')}
+.is-ios [data-bg="cta"] .parallax-bg{background-image:url('assets/bg-cta-mobile.webp')}
+
+.band{display:grid;gap:1.1rem;max-width:640px}
 .list-check{display:grid;gap:.62rem;margin-top:.2rem}
-.list-check li{display:flex;gap:.65rem;align-items:flex-start;font-size:.95rem;color:var(--ink-2)}
-.list-check svg{width:17px;height:17px;flex:none;margin-top:.22rem;stroke:var(--accent);
+.list-check li{display:flex;gap:.65rem;align-items:flex-start;font-size:.95rem;color:rgba(255,255,255,.9)}
+.list-check svg{width:17px;height:17px;flex:none;margin-top:.22rem;stroke:var(--accent-soft);
   fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-@media (max-width:860px){.band{grid-template-columns:1fr}}
 
 /* ============ PASSOS ============ */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.2rem,2.4vw,2.4rem);counter-reset:s}
@@ -275,24 +300,21 @@ ul{margin:0;padding:0;list-style:none}
 .faq p{padding-bottom:1.25rem;color:var(--muted);max-width:66ch;font-size:.95rem}
 
 /* ============ CTA FINAL ============ */
-.final{background:var(--ink);color:#fff}
 .final .h2{color:#fff;max-width:20ch}
-.final p{color:rgba(255,255,255,.76);max-width:52ch}
+.final p{color:rgba(255,255,255,.86);max-width:52ch}
 .final__in{display:grid;gap:1.5rem;justify-items:center;text-align:center}
-.final .btn--ghost{border-color:rgba(255,255,255,.34);color:#fff}
-.final .btn--ghost:hover{background:#fff;color:var(--ink);border-color:#fff}
 .final__cta{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center}
 
 /* ============ FOOTER ============ */
-.footer{background:var(--paper);border-top:1px solid var(--line);padding-block:clamp(2.6rem,4.4vw,3.6rem)}
+.footer{background:#100F0C;color:#fff;padding-block:clamp(2.6rem,4.4vw,3.6rem)}
 .footer__grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:clamp(1.8rem,3.4vw,3rem)}
 .footer h3{font-family:var(--font-display);font-size:.74rem;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--ink);margin-bottom:.85rem;font-weight:700}
-.footer p,.footer li,.footer a{font-size:.88rem;color:var(--muted);line-height:1.72}
-.footer a:hover{color:var(--ink)}
+  text-transform:uppercase;color:#fff;margin-bottom:.85rem;font-weight:700}
+.footer p,.footer li,.footer a{font-size:.88rem;color:rgba(255,255,255,.72);line-height:1.72}
+.footer a:hover{color:#fff}
 .footer img{height:44px;width:auto;margin-bottom:1rem}
-.footer__bar{margin-top:clamp(1.8rem,3vw,2.6rem);padding-top:1.3rem;border-top:1px solid var(--line);
-  display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;justify-content:space-between;font-size:.79rem;color:var(--muted)}
+.footer__bar{margin-top:clamp(1.8rem,3vw,2.6rem);padding-top:1.3rem;border-top:1px solid rgba(255,255,255,.16);
+  display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;justify-content:space-between;font-size:.79rem;color:rgba(255,255,255,.6)}
 @media (max-width:760px){.footer__grid{grid-template-columns:1fr}}
 
 /* ============ WHATSAPP FLUTUANTE ============ */
@@ -316,7 +338,7 @@ html.no-motion .rv{opacity:1;transform:none;transition:none}
 <header class="header" id="header">
   <div class="header__in">
     <a class="brand" href="#hero" aria-label="Fino Acabamento, boutique de revestimentos">
-      <img src="assets/logo-dark.webp" alt="Fino Acabamento" width="162" height="42" fetchpriority="high">
+      <img src="assets/logo-white-hd.webp" alt="Fino Acabamento" width="162" height="42" fetchpriority="high">
     </a>
     <nav class="nav" aria-label="Seções da página">
       <a href="#vitrine">Porcelanatos</a>
@@ -344,21 +366,9 @@ html.no-motion .rv{opacity:1;transform:none;transition:none}
         <a class="btn btn--wa" href="#vitrine">Consultar porcelanatos disponíveis</a>
         <a class="btn btn--ghost" href="https://wa.me/5581983618877?text=Ol%C3%A1!%20Queria%20falar%20com%20um%20especialista%20em%20porcelanato." target="_blank" rel="noopener">Falar com especialista</a>
       </div>
-      <ul class="hero__trust">
-        <li>Showroom em Boa Viagem</li>
-        <li>Estoque próprio em Recife</li>
-        <li>Prazo confirmado antes do pedido</li>
-      </ul>
     </div>
 
-    <div class="hero__media">
-      <picture>
-        <source media="(max-width:980px)" srcset="assets/hero-porc-mobile.webp">
-        <source media="(min-width:1500px)" srcset="assets/hero-porc-1600.webp">
-        <source media="(min-width:1160px)" srcset="assets/hero-porc-1200.webp">
-        <img src="assets/hero-porc-900.webp" alt="Sala ampla com porcelanato off white de grande formato no piso e jardim interno ao fundo" width="1060" height="1414" fetchpriority="high" decoding="async">
-      </picture>
-
+    <div class="hero__aside">
       <form class="hero__form" id="lead-form" novalidate>
         <h2>Receba opções de porcelanato para sua obra</h2>
         <div class="field">
@@ -538,13 +548,10 @@ html.no-motion .rv{opacity:1;transform:none;transition:none}
 </section>
 
 <!-- ============ PARA QUEM É ============ -->
-<section class="section" id="para-quem">
-  <div class="shell">
-    <div class="band">
-      <div class="band__media rv">
-        <img src="assets/amb-living.webp" alt="Living amplo com porcelanato polido no piso e parede ripada, em projeto de alto padrão" width="1600" height="1067" loading="lazy" decoding="async">
-      </div>
-      <div class="band__body rv">
+<section class="section parallax" id="para-quem" data-bg="quem">
+  <div class="parallax-bg" aria-hidden="true"></div>
+  <div class="shell parallax__in">
+    <div class="band rv">
         <h2 class="h2">Para quem está escolhendo porcelanato agora</h2>
         <p class="lead">Esta página é para quem está em fase de obra, reforma ou acabamento e precisa escolher porcelanato com segurança, sem perder tempo com opções fora do perfil do projeto.</p>
         <ul class="list-check">
@@ -554,7 +561,6 @@ html.no-motion .rv{opacity:1;transform:none;transition:none}
           <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg>Para quem busca acabamento de médio e alto padrão</li>
           <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg>Para quem quer atendimento consultivo antes de comprar</li>
         </ul>
-      </div>
     </div>
   </div>
 </section>
@@ -622,8 +628,9 @@ html.no-motion .rv{opacity:1;transform:none;transition:none}
 </section>
 
 <!-- ============ CTA FINAL ============ -->
-<section class="section final" id="contato">
-  <div class="shell">
+<section class="section final parallax" id="contato" data-bg="cta">
+  <div class="parallax-bg" aria-hidden="true"></div>
+  <div class="shell parallax__in">
     <div class="final__in rv">
       <h2 class="h2">Escolha seu porcelanato com orientação antes de fechar a compra</h2>
       <p>Envie sua metragem, a cidade da obra e o estilo desejado. A equipe da Fino Acabamento consulta as opções disponíveis e retorna pelo WhatsApp.</p>
@@ -641,7 +648,7 @@ html.no-motion .rv{opacity:1;transform:none;transition:none}
   <div class="shell">
     <div class="footer__grid">
       <div>
-        <img src="assets/logo-sm.webp" alt="Fino Acabamento" width="169" height="44" loading="lazy" decoding="async">
+        <img src="assets/logo-white-hd.webp" alt="Fino Acabamento" width="169" height="44" loading="lazy" decoding="async">
         <p>Boutique de revestimentos em Boa Viagem, Recife. Porcelanato das marcas Elizabeth, Eliane e Decortiles, com curadoria, estoque próprio e atendimento especializado.</p>
       </div>
       <div>

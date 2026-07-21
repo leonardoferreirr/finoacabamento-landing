@@ -93,7 +93,7 @@
     return '<article class="prod">' +
       '<div class="prod__img"><img src="assets/porc/' + esc(p.file) + '" alt="Porcelanato ' +
         esc(p.nome) + ', ' + esc(p.marca) + ', formato ' + esc(p.formato) + ' centímetros" ' +
-        'width="800" height="800" loading="lazy" decoding="async"></div>' +
+        'width="600" height="600" loading="lazy" decoding="async" fetchpriority="low"></div>' +
       '<div class="prod__body">' +
         '<h3 class="prod__name">' + esc(p.nome) + '</h3>' +
         '<p class="prod__meta"><b>' + esc(p.marca) + '</b> · ' + esc(meta) + '</p>' +

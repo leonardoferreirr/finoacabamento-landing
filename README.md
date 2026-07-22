@@ -82,12 +82,21 @@ Contratos da query string:
 
 | URL | Mensagem |
 |---|---|
-| `obrigado.html?c=consulta` | consulta geral de porcelanatos |
-| `obrigado.html?c=especialista` | falar com especialista |
-| `obrigado.html?c=metragem` | enviar metragem da obra |
-| `obrigado.html?c=showroom` | agendar visita ao showroom |
-| `obrigado.html?c=final` | consulta a partir do CTA final |
-| `obrigado.html?c=produto&p=Nome\|Marca\|Formato` | card da vitrine |
+| Contexto | Seção de origem | Rótulo do botão |
+|---|---|---|
+| `especialista` | hero, diferenciais | Falar com especialista |
+| `consulta` | vitrine, header, botão flutuante, rodapé | Consultar estoque e prazo |
+| `estoque` | estoque e prazo | Consultar estoque e prazo |
+| `metragem` | como funciona | Enviar metragem no WhatsApp |
+| `obra` | para quem está escolhendo | Ver opções para minha obra |
+| `showroom` | showroom | Falar no WhatsApp antes de visitar |
+| `duvidas` | FAQ | Falar com especialista |
+| `final` | CTA final | Consultar porcelanatos no WhatsApp |
+| `produto&p=Nome\|Marca\|Formato` | card da vitrine | Consultar disponibilidade |
+
+Toda seção de conteúdo fecha com um botão de WhatsApp. A única sem botão é a barra de
+marcas, que é uma faixa de três logos, não uma seção. Os rótulos saem da lista de CTAs
+aprovada no briefing da Fish; CTAs genéricos como "falar com o showroom" estão proibidos lá.
 
 Contexto ausente ou desconhecido cai em `consulta`. A página tem botão manual e link de volta,
 caso o redirecionamento não role.

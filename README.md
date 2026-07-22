@@ -12,14 +12,29 @@ produto e CTA verde recorrente. Toda a copy e as decisões estão em `COPY-FONTE
 - `index.html` — página inteira, com o CSS inline no `<head>`
 - `assets/js/main.js` — motion, vitrine com filtros, formulário e integrações de WhatsApp
 - `assets/js/produtos.js` — **gerado**, não edite à mão
-- `assets/fonts/` — Archivo e Inter subsetadas, um woff2 por peso, `font-display: optional`
+- `assets/fonts/` — Manrope e Inter, variáveis e subsetadas, um woff2 por família
+- `obrigado.html` — página de conversão, redireciona para o WhatsApp
 - `porcelanatos.json` — catálogo da vitrine (fonte da verdade)
 - `scripts/build-vitrine.mjs` — valida o catálogo e gera `produtos.js`
 
+## Tipografia
+
+Definida pelo cliente: **Manrope nos títulos, Inter nos textos.**
+
+| Onde | Fonte |
+|---|---|
+| Headline do hero | Manrope ExtraBold (800) |
+| Títulos de seção | Manrope Bold (700) |
+| Textos | Inter Regular (400) |
+| Botões, nav e chips | Inter SemiBold (600) |
+
+O peso 500 saiu do arquivo, então nav e chips foram para 600.
+
+## Fundos escuros
+
 O hero, a seção "para quem está escolhendo" e o CTA final têm foto de fundo com véu escuro e
-texto branco. O véu do hero é 40% chapado **mais** um gradiente da esquerda: a foto é muito
-clara e só os 40% deixariam o subtítulo em 3,3:1, abaixo de AA. Medido por amostragem de
-pixel com o texto oculto: 5,6:1 no pior ponto.
+texto branco. O véu do hero é 62% no centro e sobe nas pontas. Medido por amostragem de pixel
+com o texto oculto: 6,6:1 no subtítulo, no pior ponto.
 
 O CSS está inline dentro do `index.html` de propósito: eliminou 540 ms de bloqueio de
 renderização e levou o Lighthouse mobile de 87 para 100. Para editar estilo, mexa no bloco
@@ -56,15 +71,29 @@ desconto, sem tom de liquidação.**
 
 ## Conversão
 
-Não existe backend. Todo caminho termina no WhatsApp de campanha `(81) 98361-8877`, com
-mensagem pré-montada:
+Não existe backend. **Todo clique de WhatsApp passa por `obrigado.html`**, que é a página onde
+o pixel de conversão deve ser instalado. Ela monta a mensagem, mostra a marca por um instante e
+redireciona para `wa.me` com `location.replace`, para o botão voltar não cair nela de novo.
 
-- o formulário do hero monta nome, WhatsApp, cidade, ambiente e metragem e abre a conversa
-- cada card da vitrine envia nome do modelo, marca e formato
-- os botões de seção enviam mensagens de contexto próprio
+Nenhum link da página aponta para `wa.me` direto, nem o do rodapé. Se apontasse, o clique
+escaparia do disparo de conversão.
 
-O formulário valida nome, WhatsApp (mínimo de 10 dígitos) e cidade. Ambiente e metragem
-são opcionais de propósito: cinco campos obrigatórios em tráfego frio derrubam conversão.
+Contratos da query string:
+
+| URL | Mensagem |
+|---|---|
+| `obrigado.html?c=consulta` | consulta geral de porcelanatos |
+| `obrigado.html?c=especialista` | falar com especialista |
+| `obrigado.html?c=metragem` | enviar metragem da obra |
+| `obrigado.html?c=showroom` | agendar visita ao showroom |
+| `obrigado.html?c=final` | consulta a partir do CTA final |
+| `obrigado.html?c=produto&p=Nome\|Marca\|Formato` | card da vitrine |
+
+Contexto ausente ou desconhecido cai em `consulta`. A página tem botão manual e link de volta,
+caso o redirecionamento não role.
+
+**Para instalar o pixel:** coloque a tag no `<head>` de `obrigado.html`. Os 900 ms de espera
+antes do redirect existem para o disparo acontecer antes de a página sair.
 
 ## Performance
 
@@ -74,14 +103,16 @@ Nunca meça com `simulate`: o Lantern infla o LCP e mente cerca de 9 pontos.
 Regras que sustentam o número, não quebre sem medir de novo:
 
 - `font-display: optional` em todos os `@font-face`, que é o que segura o CLS em 0
-- fontes **subsetadas**. Eram 10 arquivos (latin + latin-ext por peso) somando ~230 KB, todos
-  com prioridade `VeryHigh`, competindo com a foto do hero e segurando o LCP em 2,6 s. Agora
-  são 4 arquivos e 108 KB. Se a copy ganhar um caractere fora do conjunto, regere:
+- fontes **variáveis e subsetadas**: um arquivo por família em vez de um por peso. Eram 10
+  arquivos e ~230 KB com prioridade `VeryHigh`, competindo com a foto do hero e segurando o
+  LCP em 2,6 s. Hoje são 2 arquivos e 33 KB. Se a copy ganhar um caractere fora do conjunto:
 
   ```
   SUB=' !"#$%&'"'"'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~ºª°ÀÁÂÃÇÉÊÍÓÔÕÚÜàáâãçéêíóôõúüÑñ—–…©·×²³€'
-  pyftsubset origem-latin.woff2 --text="$SUB" --layout-features='kern,liga,calt,tnum' \
-    --flavor=woff2 --output-file=assets/fonts/inter-400.woff2 --no-hinting --desubroutinize
+  # limita o eixo de peso e depois subseta
+  python3 -m fontTools.varLib.instancer inter-var.woff2 wght=400:600 -o inter-lim.ttf
+  pyftsubset inter-lim.ttf --text="$SUB" --layout-features='kern,liga,calt,tnum' \
+    --flavor=woff2 --output-file=assets/fonts/inter.woff2 --no-hinting
   ```
 - `fetchpriority="low"` nas imagens da vitrine, para não disputar banda com o hero
 - `width` e `height` explícitos em toda imagem, ou `aspect-ratio` no CSS

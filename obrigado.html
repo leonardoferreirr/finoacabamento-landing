@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abrindo o WhatsApp | Fino Acabamento</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#100F0C">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<style>
+@font-face{font-family:'Manrope';font-style:normal;font-weight:700 800;font-display:optional;src:url('assets/fonts/manrope.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 600;font-display:optional;src:url('assets/fonts/inter.woff2') format('woff2')}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;
+  background:#100F0C;color:#fff;padding:clamp(24px,6vw,56px);
+  font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.62;
+  -webkit-font-smoothing:antialiased;text-align:center}
+.box{display:grid;justify-items:center;gap:1.35rem;max-width:520px}
+img.logo{height:52px;width:auto}
+h1{font-family:'Manrope',system-ui,sans-serif;font-weight:800;letter-spacing:-.03em;
+  font-size:clamp(1.6rem,4.4vw,2.3rem);line-height:1.1;margin:0;max-width:16ch}
+p{margin:0;color:rgba(255,255,255,.78);max-width:44ch}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  padding:.95rem 1.6rem;border-radius:999px;background:#0B7A3B;color:#fff;
+  font-weight:600;font-size:.95rem;text-decoration:none;border:1px solid transparent;
+  transition:background .22s cubic-bezier(.2,.8,.25,1)}
+.btn:hover{background:#096330}
+.btn svg{width:19px;height:19px;fill:currentColor;flex:none}
+.voltar{font-size:.85rem;color:rgba(255,255,255,.5);text-decoration:none}
+.voltar:hover{color:#fff}
+.spin{width:26px;height:26px;border:2px solid rgba(255,255,255,.22);border-top-color:#fff;
+  border-radius:50%;animation:g .9s linear infinite}
+@keyframes g{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.spin{animation:none}}
+</style>
+</head>
+<body>
+  <div class="box">
+    <img class="logo" src="assets/logo-white-hd.webp" alt="Fino Acabamento" width="200" height="52">
+    <div class="spin" aria-hidden="true"></div>
+    <h1>Estamos abrindo o seu WhatsApp</h1>
+    <p id="msg">A conversa com a equipe da Fino Acabamento vai abrir em instantes, já com a sua mensagem escrita.</p>
+    <a class="btn" id="ir" href="https://wa.me/5581983618877" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-2.9.8.8-2.8-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3 0-.5l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.3.3-.9.9-.9 2.1 0 1.3.9 2.5 1 2.6.2.2 1.8 2.8 4.4 3.9 1.6.6 2.2.7 3 .6.5-.1 1.4-.6 1.6-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3Z"/></svg>
+      Abrir o WhatsApp agora
+    </a>
+    <a class="voltar" href="/">Voltar para o site</a>
+  </div>
+
+<script>
+/* Página de obrigado: é aqui que o pixel de conversão deve disparar.
+   Ela monta a mensagem a partir da query string e manda para o WhatsApp.
+   Contratos aceitos:
+     ?c=<contexto>                          mensagem fixa por origem do clique
+     ?c=produto&p=<nome>|<marca>|<formato>  mensagem do card da vitrine   */
+(function () {
+  'use strict';
+  var WA = '5581983618877';
+
+  var MENSAGENS = {
+    consulta:     'Olá! Quero consultar porcelanatos disponíveis.',
+    especialista: 'Olá! Queria falar com um especialista em porcelanato.',
+    metragem:     'Olá! Quero enviar a metragem da minha obra para receber opções de porcelanato.',
+    showroom:     'Olá! Queria combinar uma visita ao showroom de Boa Viagem.',
+    final:        'Olá! Quero consultar porcelanatos disponíveis para a minha obra.'
+  };
+
+  var q = new URLSearchParams(location.search);
+  var texto = MENSAGENS[q.get('c')] || MENSAGENS.consulta;
+
+  if (q.get('c') === 'produto' && q.get('p')) {
+    var p = q.get('p').split('|');
+    if (p[0]) {
+      texto = 'Olá! Vi o porcelanato ' + p[0] +
+        (p[1] ? ' (' + p[1] + (p[2] ? ', ' + p[2] : '') + ')' : '') +
+        ' no site e queria consultar disponibilidade e prazo.';
+      document.getElementById('msg').textContent =
+        'Vamos consultar a disponibilidade do ' + p[0] + ' com você pelo WhatsApp.';
+    }
+  }
+
+  var url = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(texto);
+  document.getElementById('ir').href = url;
+
+  /* Meia dúzia de décimos para o pixel disparar antes de sair da página.
+     replace() em vez de href para o botão voltar não cair aqui de novo. */
+  setTimeout(function () { location.replace(url); }, 900);
+})();
+</script>
+</body>
+</html>

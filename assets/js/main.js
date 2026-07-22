@@ -3,7 +3,6 @@
 (function () {
   'use strict';
 
-  var WA = '5581983618877';
   var PAGE = 8; // quantos modelos aparecem antes do "ver mais"
 
   /* ---------------------------------------------------------------
@@ -82,10 +81,11 @@
       .replace(/"/g, '&quot;');
   }
 
+  /* Todo clique de WhatsApp passa pela página de obrigado, que é onde o pixel
+     de conversão dispara. Ela remonta a mensagem a partir da query string. */
   function waLink(p) {
-    var msg = 'Olá! Vi o porcelanato ' + p.nome + ' (' + p.marca + ', ' + p.formato +
-      ') no site e queria consultar disponibilidade e prazo.';
-    return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg);
+    return 'obrigado.html?c=produto&p=' +
+      encodeURIComponent([p.nome, p.marca, p.formato + ' cm'].join('|'));
   }
 
   function cardHTML(p) {
@@ -97,7 +97,7 @@
       '<div class="prod__body">' +
         '<h3 class="prod__name">' + esc(p.nome) + '</h3>' +
         '<p class="prod__meta"><b>' + esc(p.marca) + '</b> · ' + esc(meta) + '</p>' +
-        '<a class="prod__cta" href="' + esc(waLink(p)) + '" target="_blank" rel="noopener">' +
+        '<a class="prod__cta" href="' + esc(waLink(p)) + '">' +
           '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-2.9.8.8-2.8-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3 0-.5l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.3.3-.9.9-.9 2.1 0 1.3.9 2.5 1 2.6.2.2 1.8 2.8 4.4 3.9 1.6.6 2.2.7 3 .6.5-.1 1.4-.6 1.6-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3Z"/></svg>' +
           'Consultar disponibilidade</a>' +
       '</div></article>';
@@ -172,53 +172,7 @@
   renderGrid();
 
   /* ---------------------------------------------------------------
-     5. Formulário: monta a mensagem e abre o WhatsApp
-     --------------------------------------------------------------- */
-  var form = document.getElementById('lead-form');
-  if (form) {
-    var marcaErro = function (input, invalido) {
-      var wrap = input.closest('.field');
-      if (wrap) wrap.classList.toggle('is-invalid', invalido);
-      return !invalido;
-    };
-
-    var soDigitos = function (s) { return (s || '').replace(/\D/g, ''); };
-
-    form.addEventListener('submit', function (ev) {
-      ev.preventDefault();
-
-      var nome = form.nome, zap = form.zap, cidade = form.cidade;
-      var okNome = marcaErro(nome, nome.value.trim().length < 2);
-      var okZap = marcaErro(zap, soDigitos(zap.value).length < 10);
-      var okCidade = marcaErro(cidade, cidade.value.trim().length < 2);
-      if (!(okNome && okZap && okCidade)) {
-        var falho = form.querySelector('.is-invalid input');
-        if (falho) falho.focus();
-        return;
-      }
-
-      var linhas = [
-        'Olá! Quero receber opções de porcelanato para a minha obra.',
-        '',
-        'Nome: ' + nome.value.trim(),
-        'WhatsApp: ' + zap.value.trim(),
-        'Cidade da obra: ' + cidade.value.trim()
-      ];
-      if (form.ambiente && form.ambiente.value) linhas.push('Ambiente: ' + form.ambiente.value);
-      if (form.metragem && form.metragem.value.trim()) linhas.push('Metragem: ' + form.metragem.value.trim());
-
-      window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(linhas.join('\n')), '_blank', 'noopener');
-    });
-
-    // limpa o erro assim que a pessoa começa a corrigir
-    form.addEventListener('input', function (ev) {
-      var wrap = ev.target.closest('.field');
-      if (wrap) wrap.classList.remove('is-invalid');
-    });
-  }
-
-  /* ---------------------------------------------------------------
-     5b. Parallax de foto fixa
+     5. Parallax de foto fixa
      A background-image só entra quando a seção se aproxima. Se entrasse no CSS
      puro, as duas fotos cairiam no caminho crítico e derrubariam o LCP.
      --------------------------------------------------------------- */
